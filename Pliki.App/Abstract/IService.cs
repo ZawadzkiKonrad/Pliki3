@@ -11,7 +11,7 @@ namespace Pliki.App.Abstract
         int AddItem(T item);
         int EditItem(T item);
         void RemoveItem(T item);
-        object GetLastId();
-        object GetItemById(int id);
+        int GetLastId();
+        T GetItemById(int id);
     }
 }

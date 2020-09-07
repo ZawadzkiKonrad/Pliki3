@@ -39,13 +39,13 @@ namespace Pliki.App.Menagers
             {
                 Console.WriteLine($"{addNewItemMenu[i].Id}. {addNewItemMenu[i].Name}");
             }
-            var lastId = _itemService.GetLastId();
+            int lastId = _itemService.GetLastId();
             var operation = Console.ReadKey();
             Int32.TryParse(operation.KeyChar.ToString(), out int typeId);
             Console.WriteLine("Podaj nazwe pliku:");
             var name = Console.ReadLine();
             
-            Item item = new Item((int)lastId,name.ToString(), typeId);
+            Item item = new Item(lastId,name.ToString(), typeId);
             
             Items.Add(item);
            

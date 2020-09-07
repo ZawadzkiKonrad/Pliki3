@@ -37,7 +37,7 @@ namespace Pliki.App.Common
             throw new NotImplementedException();
         }
 
-        public object GetLastId()
+        public int GetLastId()
                
         {
             int lastId;
@@ -52,7 +52,7 @@ namespace Pliki.App.Common
             return lastId;
         }
 
-        public object GetItemById(int id)
+        public T GetItemById(int id)
         {
             throw new NotImplementedException();
         }
