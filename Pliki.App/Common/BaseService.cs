@@ -16,7 +16,29 @@ namespace Pliki.App.Common
             Items = new List<T>();
         }
 
-        public int GetLastId()
+        public List<T> getAllItems()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int AddItem(T item)
+        {
+            Items.Add(item);
+            return item.Id;
+        }
+
+        public int EditItem(T item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveItem(T item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetLastId()
+               
         {
             int lastId;
             if (Items.Any())
@@ -29,56 +51,51 @@ namespace Pliki.App.Common
             }
             return lastId;
         }
-        public int AddItem(T item)
-        {
-            Items.Add(item);
-            return item.Id;
-        }
 
-        public List<T> GetAllItems()
-        {
-            return Items;
-        }
-
-        public void RemoveItem(T item)
-        {
-            Items.Remove(item);
-        }
-
-        public int UpdateItem(T item)
-        {
-            var entity = Items.FirstOrDefault(p => p.Id == item.Id);
-            if (entity != null)
-            {
-                entity = item;
-            }
-            return entity.Id;
-        }
-
-        public T GetItemById(int id)
-        {
-            var entity = Items.FirstOrDefault(p => p.Id == id);
-            return entity;
-        }
-
-        public List<T> getAllItems()
+        public object GetItemById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int EditItem(T item)
-        {
-            throw new NotImplementedException();
-        }
+        //public int GetLastId()
+        //{
+        //    int lastId;
+        //    if (Items.Any())
+        //    {
+        //        lastId = Items.OrderBy(p => p.Id).LastOrDefault().Id;
+        //    }
+        //    else
+        //    {
+        //        lastId = 0;
+        //    }
+        //    return lastId;
+        //}
+        //public int AddItem(T item)
+        //{
+        //    Items.Add(item);
+        //    return item.Id;
+        //}
 
-        object IService<T>.GetLastId()
-        {
-            throw new NotImplementedException();
-        }
+        //public List<T> GetAllItems()
+        //{
+        //    return Items;
+        //}
 
-        object IService<T>.GetItemById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        //public void RemoveItem(T item)
+        //{
+        //    Items.Remove(item);
+        //}
+
+        //public int UpdateItem(T item)
+        //{
+        //    var entity = Items.FirstOrDefault(p => p.Id == item.Id);
+        //    if (entity != null)
+        //    {
+        //        entity = item;
+        //    }
+        //    return entity.Id;
+        //}
+
+
     }
 }

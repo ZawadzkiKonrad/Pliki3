@@ -6,16 +6,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Pliki.Helpers;
+using Pliki.App.Common;
 
 namespace Pliki.App.Menagers
 {
-   public class ItemMenager: IService<Item>
+   public class ItemMenager: BaseService<Item>
     {
         private readonly MenuActionService _actionService;
-        private IService<Item> _itemService;
-       
+        public IService<Item> _itemService;
 
-        public List<Item> Items { get; set; } = new List<Item>();
+
+
+        public new List<Item> Items { get; set; } = new List<Item>();
         
 
 
@@ -37,13 +39,14 @@ namespace Pliki.App.Menagers
             {
                 Console.WriteLine($"{addNewItemMenu[i].Id}. {addNewItemMenu[i].Name}");
             }
-            int lastId = Items.Count;
+            var lastId = _itemService.GetLastId();
             var operation = Console.ReadKey();
             Int32.TryParse(operation.KeyChar.ToString(), out int typeId);
             Console.WriteLine("Podaj nazwe pliku:");
             var name = Console.ReadLine();
             
-            Item item = new Item(lastId,name.ToString(), typeId);
+            Item item = new Item((int)lastId,name.ToString(), typeId);
+            
             Items.Add(item);
            
             
@@ -88,40 +91,6 @@ namespace Pliki.App.Menagers
             Console.Write(toShow.ToStringTable(new[] { "Id", "Name" }, a => a.Id, async => async.Name));
         }
 
-        public Item GetItemById(int id)
-        {
-            var item = _itemService.GetItemById(id);
-            return (Item)item;
-        }
-
-        public List<Item> getAllItems()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int AddItem(Item item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int EditItem(Item item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveItem(Item item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object GetLastId()
-        {
-            throw new NotImplementedException();
-        }
-
-        object IService<Item>.GetItemById(int id)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
